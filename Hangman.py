@@ -84,7 +84,7 @@ def displayBoard(missedLetters, correctLetters, secretWord):
 
     for i in range(len(secretWord)):  # Replace blanks with correctly guessed letters.
         if secretWord[i] in correctLetters:
-            blanks = blanks[:i] + secretWord[i] + blanks[i + 1:]
+            blanks = blanks[:i] + secretWord[i] + blanks[i + 1 :]
 
     for letter in blanks:  # Show the secret word with spaces in between each letter.
         print(letter, end=" ")

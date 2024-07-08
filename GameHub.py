@@ -11,7 +11,7 @@ games = {
     "Rock Paper Scissors": rps,
     "Hangman": hg,
     "Tic Tac Toe": ttt,
-    "Mastermind": mm
+    "Mastermind": mm,
 }
 
 for _, (game_name, game_func) in enumerate(games.items()):

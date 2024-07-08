@@ -1,4 +1,5 @@
 """A tic-tac-toe game built with Python and Tkinter."""
+
 import tkinter as tk
 from itertools import cycle
 from tkinter import font
