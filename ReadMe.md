@@ -55,8 +55,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Contact
 
-Shahm Najeeb - [@your_twitter](https://twitter.com/your_twitter) - nirt_12023@outlook.com
+Shahm Najeeb - nirt_12023@outlook.com
 
-Project Link: [https://github.com/DefinetlyNotAI/Game-Selector](https://github.com/DefinetlyNotAI/Game-Selector)
+Project Link: [https://github.com/DefinetlyNotAI/Game-Selector](https://github.com/DefinetlyNotAI/GameHub)
 
 
