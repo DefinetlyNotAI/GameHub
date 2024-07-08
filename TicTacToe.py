@@ -25,6 +25,16 @@ DEFAULT_PLAYERS = (
 
 class TicTacToeGame:
     def __init__(self, players=DEFAULT_PLAYERS, board_size=BOARD_SIZE):
+        """
+        Initialize the TicTacToeGame with the specified players and board size.
+
+        Parameters:
+            players (tuple): A tuple of Player objects representing the players of the game.
+            board_size (int): The size of the game board.
+
+        Returns:
+            None
+        """
         self._players = cycle(players)
         self.board_size = board_size
         self.current_player = next(self._players)
@@ -35,6 +45,24 @@ class TicTacToeGame:
         self._setup_board()
 
     def _setup_board(self):
+        """
+        Initializes the game board by creating a 2D list of Move objects representing the current moves
+        and a list of winning combinations.
+
+        This function creates a 2D list of Move objects, where each Move object represents a cell on the
+        game board. The Move object has three attributes: row, col, and label. The row and col attributes
+        represent the position of the cell on the board, and the label attribute represents the label
+        of the player who made the move.
+
+        The function also calls the _get_winning_combos() method to get a list of winning combinations.
+        These combinations are used to check if a player has won the game.
+
+        Parameters:
+            self (TicTacToeGame): The TicTacToeGame object.
+
+        Returns:
+            None
+        """
         self._current_moves = [
             [Move(row, col) for col in range(self.board_size)]
             for row in range(self.board_size)
@@ -42,6 +70,18 @@ class TicTacToeGame:
         self._winning_combos = self._get_winning_combos()
 
     def _get_winning_combos(self):
+        """
+        Generate a list of winning combinations for the Tic-Tac-Toe game.
+
+        This function creates winning combinations by combining rows, columns, and diagonals of the current game board.
+        The winning combinations are used to determine if a player has won the game.
+
+        Parameters:
+            self (TicTacToeGame): The TicTacToeGame object.
+
+        Returns:
+            list: A list of winning combinations.
+        """
         rows = [[(move.row, move.col) for move in row] for row in self._current_moves]
         columns = [list(col) for col in zip(*rows)]
         first_diagonal = [row[i] for i, row in enumerate(rows)]
@@ -92,6 +132,15 @@ class TicTacToeGame:
 
 class TicTacToeBoard(tk.Tk):
     def __init__(self, game):
+        """
+        Initialize the TicTacToeBoard with the specified game object.
+
+        Parameters:
+            game: The game object associated with the board.
+
+        Returns:
+            None
+        """
         super().__init__()
         self.title("Tic-Tac-Toe Game")
         self._cells = {}
@@ -101,6 +150,9 @@ class TicTacToeBoard(tk.Tk):
         self._create_board_grid()
 
     def _create_menu(self):
+        """
+        Create the menu bar for the Tic-Tac-Toe game window.
+        """
         menu_bar = tk.Menu(master=self)
         self.config(menu=menu_bar)
         file_menu = tk.Menu(master=menu_bar)
@@ -110,6 +162,19 @@ class TicTacToeBoard(tk.Tk):
         menu_bar.add_cascade(label="File", menu=file_menu)
 
     def _create_board_display(self):
+        """
+        Creates a frame and a label to display the game board.
+
+        This function creates a new frame and sets it as the master for the label.
+        The label is then configured with the text "Ready?" and a font size of 28.
+        The label is packed into the frame.
+
+        Parameters:
+            self (TicTacToeBoard): The instance of the TicTacToeBoard class.
+
+        Returns:
+            None
+        """
         display_frame = tk.Frame(master=self)
         display_frame.pack(fill=tk.X)
         self.display = tk.Label(
@@ -120,6 +185,19 @@ class TicTacToeBoard(tk.Tk):
         self.display.pack()
 
     def _create_board_grid(self):
+        """
+        Creates a grid of buttons representing the game board.
+
+        This function iterates over the board size to create a grid of buttons using Tkinter.
+        Each button is configured with specific properties like text, font, color, and size.
+        The buttons are then mapped to cell positions and bound to a play event.
+
+        Parameters:
+            self (TicTacToeBoard): The instance of the TicTacToeBoard class.
+
+        Returns:
+            None
+        """
         grid_frame = tk.Frame(master=self)
         grid_frame.pack()
         for row in range(self._game.board_size):
@@ -160,14 +238,43 @@ class TicTacToeBoard(tk.Tk):
                 self._update_display(msg)
 
     def _update_button(self, clicked_btn):
+        """
+        Update the appearance of the clicked button with the current player's label and color.
+
+        Parameters:
+            self (TicTacToeBoard): The instance of the TicTacToeBoard class.
+            clicked_btn (Button): The button that was clicked and needs to be updated.
+
+        Returns:
+            None
+        """
         clicked_btn.config(text=self._game.current_player.label)
         clicked_btn.config(fg=self._game.current_player.color)
 
     def _update_display(self, msg, color="black"):
+        """
+        Updates the display with the given message and color.
+
+        Parameters:
+            msg (str): The message to be displayed.
+            color (str, optional): The color of the message. Defaults to "black".
+
+        Returns:
+            None
+        """
         self.display["text"] = msg
         self.display["fg"] = color
 
     def _highlight_cells(self):
+        """
+        Highlight the cells that are part of the winning combination.
+
+        Parameters:
+            self (TicTacToeBoard): The instance of the TicTacToeBoard class.
+
+        Returns:
+            None
+        """
         for button, coordinates in self._cells.items():
             if coordinates in self._game.winner_combo:
                 button.config(highlightbackground="red")

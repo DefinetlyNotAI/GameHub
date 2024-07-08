@@ -49,11 +49,31 @@ words = "ant baboon badger bat bear beaver camel cat clam cobra cougar coyote cr
 
 
 def getRandomWord(wordList):
+    """
+    Returns a random word from the given word list.
+
+    Parameters:
+        wordList (list): A list of words.
+
+    Returns:
+        str: A randomly selected word from the word list.
+    """
     wordIndex = random.randint(0, len(wordList) - 1)
     return wordList[wordIndex]
 
 
 def displayBoard(missedLetters, correctLetters, secretWord):
+    """
+    Display the hangman game board with the missed letters, correctly guessed letters, and the secret word.
+
+    Parameters:
+        missedLetters (str): A string of letters that have been guessed incorrectly.
+        correctLetters (str): A string of letters that have been guessed correctly.
+        secretWord (str): The secret word being guessed.
+
+    Returns:
+        None
+    """
     print(HANGMAN_PICS[len(missedLetters)])
     print()
     print("Missed letters:", end=" ")
@@ -64,7 +84,7 @@ def displayBoard(missedLetters, correctLetters, secretWord):
 
     for i in range(len(secretWord)):  # Replace blanks with correctly guessed letters.
         if secretWord[i] in correctLetters:
-            blanks = blanks[:i] + secretWord[i] + blanks[i + 1 :]
+            blanks = blanks[:i] + secretWord[i] + blanks[i + 1:]
 
     for letter in blanks:  # Show the secret word with spaces in between each letter.
         print(letter, end=" ")
@@ -72,6 +92,23 @@ def displayBoard(missedLetters, correctLetters, secretWord):
 
 
 def getGuess(alreadyGuessed):
+    """
+    Prompts the user to guess a letter until a valid input is provided.
+
+    Parameters:
+        alreadyGuessed (str): A string of letters that have already been guessed.
+
+    Returns:
+        str: A lowercase letter that the user has guessed.
+
+    Raises:
+        None
+
+    This function prompts the user to guess a letter until a valid input is provided. It takes in a list of letters
+    that have already been guessed. The function continues to prompt the user until they enter a single lowercase
+    letter that has not already been guessed. If the user enters a letter that is not a single lowercase letter,
+    the function displays an error message and prompts the user again. The function returns the valid guessed letter.
+    """
     while True:
         print("Guess a letter.")
         guess = input()
@@ -87,11 +124,19 @@ def getGuess(alreadyGuessed):
 
 
 def playAgain():
+    """
+    Asks the user if they want to play again. Returns True if the user wants to play again, False otherwise.
+    """
     print("Do you want to play again? (yes or no)")
     return input().lower().startswith("y")
 
 
 def Hangman_game():
+    """
+    A simple Hangman game function that allows players to guess letters until they either win or lose.
+    It initializes the game settings, displays the board, takes guesses, checks for correct guesses, updates missed letters, and handles game outcomes.
+    The game continues until the player chooses to stop or finishes the game.
+    """
     print("H A N G M A N")
     missedLetters = ""
     correctLetters = ""

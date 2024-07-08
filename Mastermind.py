@@ -33,6 +33,15 @@ def provide_feedback(secret_code, guess):
 
 
 def play_mastermind():
+    """
+    Runs the Mastermind game.
+
+    This function prompts the player to enter a 4-digit guess and provides feedback on the guess.
+    The game continues until the player guesses the secret code.
+
+    Returns:
+        None
+    """
     print("To exit the game type 'exit'")
     secret_code = generate_secret_code()
     amount = 0
