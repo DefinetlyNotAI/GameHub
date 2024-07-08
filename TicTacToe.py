@@ -1,5 +1,4 @@
 """A tic-tac-toe game built with Python and Tkinter."""
-
 import tkinter as tk
 from itertools import cycle
 from tkinter import font
@@ -183,12 +182,8 @@ class TicTacToeBoard(tk.Tk):
             button.config(fg="black")
 
 
-def main():
+def ttt():
     """Create the game's board and run its main loop."""
     game = TicTacToeGame()
     board = TicTacToeBoard(game)
     board.mainloop()
-
-
-if __name__ == "__main__":
-    main()

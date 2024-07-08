@@ -10,12 +10,16 @@ def get_player_guess():
     """Gets the player's guess as a list of integers."""
     while True:
         try:
-            guess = list(map(int, input("Enter your 4-digit guess: ").strip()))
+            temp = input("Enter your 4-digit guess: ").strip()
+            guess = list(map(int, temp))
             if len(guess) == 4 and all(0 <= num < 10 for num in guess):
                 return guess
             else:
                 print("Invalid guess. Please enter a 4-digit number.")
         except ValueError:
+            if temp == "exit":
+                print("Thanks for playing!")
+                exit(0)
             print("Invalid input. Please enter a 4-digit number.")
 
 
@@ -29,6 +33,7 @@ def provide_feedback(secret_code, guess):
 
 
 def play_mastermind():
+    print("To exit the game type 'exit'")
     secret_code = generate_secret_code()
     amount = 0
     while True:
@@ -41,7 +46,3 @@ def play_mastermind():
             print("Congratulations! You've guessed the code.")
             print(f"It took you {amount} guesses.")
             break
-
-
-if __name__ == "__main__":
-    play_mastermind()

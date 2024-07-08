@@ -1,32 +1,17 @@
-import tkinter as tk
+from Hangman import Hangman_game as hg
+from Mastermind import play_mastermind as mm
+from RPS import rps
+from TicTacToe import ttt, tk
 
 root = tk.Tk()
 root.title("Game Selector")
 
-
-# Define the game functions
-def mastermind():
-    print("Mastermind")
-
-
-def rock_paper_scissors():
-    print("Rock Paper Scissors")
-
-
-def hangman():
-    print("Hangman")
-
-
-def tic_tac_toe():
-    print("Tic Tac Toe")
-
-
 # Map game names to their corresponding functions
 games = {
-    "Rock Paper Scissors": rock_paper_scissors,
-    "Hangman": hangman,
-    "Tic Tac Toe": tic_tac_toe,
-    "Mastermind": mastermind,
+    "Rock Paper Scissors": rps,
+    "Hangman": hg,
+    "Tic Tac Toe": ttt,
+    "Mastermind": mm
 }
 
 for _, (game_name, game_func) in enumerate(games.items()):

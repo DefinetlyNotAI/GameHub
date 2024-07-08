@@ -44,14 +44,10 @@ def play_game():
     print(result)
 
 
-def main():
+def rps():
     """Main function to run the game."""
     while True:
         play_game()
         repeat = input("Play again? (y/n): ")
         if repeat.lower() != "y":
             break
-
-
-if __name__ == "__main__":
-    main()
