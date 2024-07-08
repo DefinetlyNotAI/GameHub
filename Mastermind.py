@@ -22,7 +22,9 @@ def get_player_guess():
 def provide_feedback(secret_code, guess):
     """Provides feedback on the player's guess."""
     correct_in_position = sum(a == b for a, b in zip(secret_code, guess))
-    correct_not_in_position = sum(min(secret_code.count(c), guess.count(c)) for c in set(secret_code + guess))
+    correct_not_in_position = sum(
+        min(secret_code.count(c), guess.count(c)) for c in set(secret_code + guess)
+    )
     return correct_in_position, correct_not_in_position - correct_in_position
 
 

@@ -26,12 +26,16 @@ games = {
     "Rock Paper Scissors": rock_paper_scissors,
     "Hangman": hangman,
     "Tic Tac Toe": tic_tac_toe,
-    "Mastermind": mastermind
+    "Mastermind": mastermind,
 }
 
 for _, (game_name, game_func) in enumerate(games.items()):
     # Create a button for each game
-    btn = tk.Button(root, text=game_name, command=lambda i=_, game_func=games[game_name]: game_func())
+    btn = tk.Button(
+        root,
+        text=game_name,
+        command=lambda i=_, game_func=games[game_name]: game_func(),
+    )
     btn.pack(pady=10)
 
 # Start the main loop

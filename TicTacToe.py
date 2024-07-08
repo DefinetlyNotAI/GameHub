@@ -43,10 +43,7 @@ class TicTacToeGame:
         self._winning_combos = self._get_winning_combos()
 
     def _get_winning_combos(self):
-        rows = [
-            [(move.row, move.col) for move in row]
-            for row in self._current_moves
-        ]
+        rows = [[(move.row, move.col) for move in row] for row in self._current_moves]
         columns = [list(col) for col in zip(*rows)]
         first_diagonal = [row[i] for i, row in enumerate(rows)]
         second_diagonal = [col[j] for j, col in enumerate(reversed(columns))]
@@ -78,9 +75,7 @@ class TicTacToeGame:
     def is_tied(self):
         """Return True if the game is tied, and False otherwise."""
         no_winner = not self._has_winner
-        played_moves = (
-            move.label for row in self._current_moves for move in row
-        )
+        played_moves = (move.label for row in self._current_moves for move in row)
         return no_winner and all(played_moves)
 
     def toggle_player(self):

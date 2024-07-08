@@ -15,7 +15,7 @@ def get_player_choice():
 
 def get_computer_choice():
     """Generates a random choice for the computer."""
-    choices = ['rock', 'paper', 'scissors']
+    choices = ["rock", "paper", "scissors"]
     computer_choice = random.choice(choices)
     return computer_choice
 
@@ -24,9 +24,11 @@ def determine_winner(player_choice, computer_choice):
     """Determines the winner based on the rules of RPS."""
     if player_choice == computer_choice:
         return "It's a tie!"
-    elif (player_choice == 'rock' and computer_choice == 'scissors') or \
-            (player_choice == 'paper' and computer_choice == 'rock') or \
-            (player_choice == 'scissors' and computer_choice == 'paper'):
+    elif (
+        (player_choice == "rock" and computer_choice == "scissors")
+        or (player_choice == "paper" and computer_choice == "rock")
+        or (player_choice == "scissors" and computer_choice == "paper")
+    ):
         return "Player wins!"
     else:
         return "Computer wins!"
@@ -47,7 +49,7 @@ def main():
     while True:
         play_game()
         repeat = input("Play again? (y/n): ")
-        if repeat.lower() != 'y':
+        if repeat.lower() != "y":
             break
 
 
